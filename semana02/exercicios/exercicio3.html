@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Palíndromo</title>
+</head>
+<body>
+
+    <h1>Teste de Palíndromo</h1>
+    <input type="text" id="frase" placeholder="Digite uma palavra ou frase">
+    <button onclick="verificar()">Verificar</button>
+
+    <script>
+        function verificar() {
+            let frase = document.getElementById('frase').value.toLowerCase().replace(/[^a-z0-9]/g, '');
+            let reverso = frase.split('').reverse().join('');
+            alert(frase === reverso ? "Palíndromo detectado!" : "Não é um palíndromo.");
+        }
+    </script>
+
+</body>
+</html>
