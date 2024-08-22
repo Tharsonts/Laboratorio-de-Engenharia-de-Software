@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcular Fatorial</title>
+    <title>Checagem do Tipo de Dado</title>
+   
 </head>
 <body>
     <script>
-	
-        var num = parseInt(prompt("Digite um número inteiro POSITIVO:"));
-        var fat = 1;
+        var dado = prompt("Insira um dado:");
+        var checkTipo = confirm("Deseja checar o tipo do dado?");
 
-        if (num >= 0) 
+        if (checkTipo) 
 		{
-            for (var i = 1; i <= num; i++) 
+            var tipoDoDado;
+            if (!isNaN(dado)) 
 			{
-                fat *= i;
+                if (Number.isInteger(parseFloat(dado))) 
+				{
+                    tipoDoDado = "Number (inteiro)";
+                } 
+				else 
+				{
+                    tipoDoDado = "Number (decimal)";
+                }
+            } 
+			else 
+			{
+                tipoDoDado = typeof dado;
             }
-            alert("O fatorial de " + num + " é " + fat);
+            document.write("Tipo do dado: " + tipoDoDado);
         } 
 		else 
 		{
-            alert("Por favor, digite um número inteiro positivo VÁLIDO!!!!.");
+            document.write("Obrigado por visitar esta página ☺");
         }
-		//gm
+		
     </script>
 </body>
 </html>
