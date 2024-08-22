@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificar se o Número é Par ou Ímpar</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Calcular Fatorial</title>
 </head>
 <body>
     <script>
-        var numero = parseInt(prompt("Digite um número inteiro positivo:"));
+	
+        var num = parseInt(prompt("Digite um número inteiro POSITIVO:"));
+        var fat = 1;
 
-        if (numero > 0) {
-            if (numero % 2 === 0) {
-                alert("O número " + numero + " é par.");
-            } else {
-                alert("O número " + numero + " é ímpar.");
+        if (num >= 0) 
+		{
+            for (var i = 1; i <= num; i++) 
+			{
+                fat *= i;
             }
-        } else {
-            alert("Por favor, digite um número inteiro positivo válido.");
+            alert("O fatorial de " + num + " é " + fat);
+        } 
+		else 
+		{
+            alert("Por favor, digite um número inteiro positivo VÁLIDO!!!!.");
         }
+		//gm
     </script>
 </body>
 </html>
