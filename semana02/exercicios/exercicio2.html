@@ -4,11 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relógio Atualizado</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            background-color: #282c34;
+            color: #61dafb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        p {
+            font-size: 3rem;
+            padding: 15px 30px;
+            border: 3px solid #61dafb;
+            border-radius: 15px;
+            background-color: #20232a;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        p:hover {
+            background-color: #61dafb;
+            color: #20232a;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Relógio Atual</h1>
-    <p id="relogio"></p>
+    <div>
+        <h1>Relógio Atual</h1>
+        <p id="relogio"></p>
+    </div>
 
     <script>
         function displayTime() {
