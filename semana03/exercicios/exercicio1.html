@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Itens</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f6faf9, #520252);
+            color: #2c3e50;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        input[type="text"] {
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+        button {
+            padding: 15px 30px;
+            background-color: #660750;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #eb9ae1;
+            transform: scale(1.05);
+        }
+        ol {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 30px;
+            position: relative;
+        }
+        li {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	    transition: transform 0.3s, box-shadow 0.3s;
+        }
+        li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Cadastrar Itens</h1>
+    <form id="form">
+        <input type="text" id="item" placeholder="Adicione um item" required>
+        <button type="submit">Adicionar</button>
+    </form>
+    <ol id="lista"></ol>
+    
+    <script>
+        const form = document.getElementById('form');
+        const itemInput = document.getElementById('item');
+        const lista = document.getElementById('lista');
+        const itens = [];
 
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            itens.push(itemInput.value);
+            itens.sort();
+            atualizarLista();
+            itemInput.value = '';
+        });
+
+        function atualizarLista() {
+            lista.innerHTML = '';
+            itens.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                lista.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
