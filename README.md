@@ -35,7 +35,7 @@ Desafios focados em manipulação de datas e strings:
 
 1️⃣ Criação de Lista Ordenada utilizando Array  
 
-<img src="img/Atividade3(1).png" alt="Atividade" width="600">
+<img src="img/Atividade 3(1).png" alt="Atividade" width="600">
 
 
 📝 *As atividades são projetadas para fortalecer habilidades em lógica de programação e aprimorar o domínio de JavaScript. Boa prática!*
