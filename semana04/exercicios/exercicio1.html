@@ -153,10 +153,8 @@
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>Formulário de Cadastro</h1>
-
         <div class="radio-group">
             <input type="radio" name="perfil" value="professor" id="professorRadio">
             <label for="professorRadio">Professor</label>
@@ -168,97 +166,95 @@
         <form id="formProfessor" class="active">
             <div class="form-group">
                 <label for="nomeProfessor">Nome:</label>
-                <input type="text" id="nomeProfessor" name="nome" placeholder="Digite seu nome completo">
+                <input type="text" id="nomeProfessor" name="nome" placeholder="Digite seu nome completo" required>
             </div>
-
+        
             <div class="form-row">
                 <div class="form-group">
                     <label for="emailProfessor">Email:</label>
-                    <input type="email" id="emailProfessor" name="email" placeholder="fulano@dominio.com">
+                    <input type="email" id="emailProfessor" name="email" placeholder="fulano@dominio.com" required>
                 </div>
-
+        
                 <div class="form-group">
                     <label for="dataNascimentoProfessor">Data de Nascimento:</label>
-                    <input type="date" id="dataNascimentoProfessor" name="dataNascimento">
+                    <input type="date" id="dataNascimentoProfessor" name="dataNascimento" required>
                 </div>
             </div>
-
+        
             <div class="form-row">
                 <div class="form-group">
                     <label for="telefoneFixoProfessor">Telefone Fixo:</label>
-                    <input type="tel" id="telefoneFixoProfessor" name="telefoneFixo" placeholder="(xx)xxxx-xxxx">
+                    <input type="tel" id="telefoneFixoProfessor" name="telefoneFixo" placeholder="(xx)xxxx-xxxx" required>
                 </div>
-
+        
                 <div class="form-group">
                     <label for="telefoneCelularProfessor">Telefone Celular:</label>
-                    <input type="tel" id="telefoneCelularProfessor" name="telefoneCelular" placeholder="(xx)xxxxx-xxxx">
+                    <input type="tel" id="telefoneCelularProfessor" name="telefoneCelular" placeholder="(xx)xxxxx-xxxx" required>
                 </div>
             </div>
-
+        
             <div class="form-group">
                 <label for="areaProfessor">Área de Atuação:</label>
-                <input type="text" id="areaProfessor" name="area" placeholder="Digite sua área de atuação">
+                <input type="text" id="areaProfessor" name="area" placeholder="Digite sua área de atuação" required>
             </div>
-
+        
             <div class="form-group">
                 <label for="lattesProfessor">Lattes:</label>
-                <input type="text" id="lattesProfessor" name="lattes" placeholder="Digite o link para o seu Lattes">
+                <input type="url" id="lattesProfessor" name="lattes" placeholder="Digite o link para o seu Lattes" required>
             </div>
-
+        
             <div class="form-group">
                 <label for="matriculaProfessor">Matrícula:</label>
-                <input type="text" id="matriculaProfessor" name="matricula" placeholder="Digite sua matrícula">
+                <input type="text" id="matriculaProfessor" name="matricula" placeholder="Digite sua matrícula" required>
             </div>
-
+        
             <div class="form-actions">
                 <button type="submit">Enviar</button>
                 <button type="reset">Redefinir</button>
             </div>
         </form>
-
+        
         <form id="formAluno">
             <div class="form-group">
                 <label for="nomeAluno">Nome:</label>
-                <input type="text" id="nomeAluno" name="nome" placeholder="Digite seu nome completo">
+                <input type="text" id="nomeAluno" name="nome" placeholder="Digite seu nome completo" required>
             </div>
-
+        
             <div class="form-row">
                 <div class="form-group">
                     <label for="emailAluno">Email:</label>
-                    <input type="email" id="emailAluno" name="email" placeholder="fulano@dominio.com">
+                    <input type="email" id="emailAluno" name="email" placeholder="fulano@dominio.com" required>
                 </div>
-
+        
                 <div class="form-group">
                     <label for="dataNascimentoAluno">Data de Nascimento:</label>
-                    <input type="date" id="dataNascimentoAluno" name="dataNascimento">
+                    <input type="date" id="dataNascimentoAluno" name="dataNascimento" required>
                 </div>
             </div>
-
+        
             <div class="form-row">
                 <div class="form-group">
                     <label for="telefoneFixoAluno">Telefone Fixo:</label>
-                    <input type="tel" id="telefoneFixoAluno" name="telefoneFixo" placeholder="(xx)xxxx-xxxx">
+                    <input type="tel" id="telefoneFixoAluno" name="telefoneFixo" placeholder="(xx)xxxx-xxxx" required>
                 </div>
-
+        
                 <div class="form-group">
                     <label for="telefoneCelularAluno">Telefone Celular:</label>
-                    <input type="tel" id="telefoneCelularAluno" name="telefoneCelular" placeholder="(xx)xxxxx-xxxx">
+                    <input type="tel" id="telefoneCelularAluno" name="telefoneCelular" placeholder="(xx)xxxxx-xxxx" required>
                 </div>
             </div>
-
+        
             <div class="form-group">
                 <label for="cursoAluno">Curso:</label>
-                <input type="text" id="cursoAluno" name="curso" placeholder="Digite seu curso">
+                <input type="text" id="cursoAluno" name="curso" placeholder="Digite seu curso" required>
             </div>
-
+        
             <div class="form-actions">
                 <button type="submit">Enviar</button>
                 <button type="reset">Redefinir</button>
             </div>
         </form>
-
     </div>
-
     <script>
         class Pessoa {
             constructor(nome, email, dataNascimento, telefoneFixo, telefoneCelular) {
@@ -364,6 +360,5 @@
             alert('Dados do aluno armazenados com sucesso!');
         });
     </script>
-
 </body>
 </html>
