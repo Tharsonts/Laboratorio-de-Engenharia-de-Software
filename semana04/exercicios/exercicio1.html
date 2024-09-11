@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h1:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: #007bff;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .radio-group input {
+            display: none;
+        }
+
+        .radio-group label {
+            padding: 10px 25px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .radio-group input:checked + label {
+            background-color: #495057;
+        }
+
+        .radio-group label:hover {
+            background-color: #0056b3;
+        }
+
+        form {
+            display: none;
+        }
+
+        form.active {
+            display: block;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"], input[type="date"], input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            transition: border 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, input[type="tel"]:focus {
+            border-color: #007bff;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="reset"] {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        button[type="reset"]:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Formulário de Cadastro</h1>
+
+        <div class="radio-group">
+            <input type="radio" name="perfil" value="professor" id="professorRadio">
+            <label for="professorRadio">Professor</label>
+
+            <input type="radio" name="perfil" value="aluno" id="alunoRadio">
+            <label for="alunoRadio">Aluno</label>
+        </div>
+
+        <form id="formProfessor" class="active">
+            <div class="form-group">
+                <label for="nomeProfessor">Nome:</label>
+                <input type="text" id="nomeProfessor" name="nome" placeholder="Digite seu nome completo">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="emailProfessor">Email:</label>
+                    <input type="email" id="emailProfessor" name="email" placeholder="fulano@dominio.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="dataNascimentoProfessor">Data de Nascimento:</label>
+                    <input type="date" id="dataNascimentoProfessor" name="dataNascimento">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="telefoneFixoProfessor">Telefone Fixo:</label>
+                    <input type="tel" id="telefoneFixoProfessor" name="telefoneFixo" placeholder="(xx)xxxx-xxxx">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefoneCelularProfessor">Telefone Celular:</label>
+                    <input type="tel" id="telefoneCelularProfessor" name="telefoneCelular" placeholder="(xx)xxxxx-xxxx">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="areaProfessor">Área de Atuação:</label>
+                <input type="text" id="areaProfessor" name="area" placeholder="Digite sua área de atuação">
+            </div>
+
+            <div class="form-group">
+                <label for="lattesProfessor">Lattes:</label>
+                <input type="text" id="lattesProfessor" name="lattes" placeholder="Digite o link para o seu Lattes">
+            </div>
+
+            <div class="form-group">
+                <label for="matriculaProfessor">Matrícula:</label>
+                <input type="text" id="matriculaProfessor" name="matricula" placeholder="Digite sua matrícula">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit">Enviar</button>
+                <button type="reset">Redefinir</button>
+            </div>
+        </form>
+
+        <form id="formAluno">
+            <div class="form-group">
+                <label for="nomeAluno">Nome:</label>
+                <input type="text" id="nomeAluno" name="nome" placeholder="Digite seu nome completo">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="emailAluno">Email:</label>
+                    <input type="email" id="emailAluno" name="email" placeholder="fulano@dominio.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="dataNascimentoAluno">Data de Nascimento:</label>
+                    <input type="date" id="dataNascimentoAluno" name="dataNascimento">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="telefoneFixoAluno">Telefone Fixo:</label>
+                    <input type="tel" id="telefoneFixoAluno" name="telefoneFixo" placeholder="(xx)xxxx-xxxx">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefoneCelularAluno">Telefone Celular:</label>
+                    <input type="tel" id="telefoneCelularAluno" name="telefoneCelular" placeholder="(xx)xxxxx-xxxx">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cursoAluno">Curso:</label>
+                <input type="text" id="cursoAluno" name="curso" placeholder="Digite seu curso">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit">Enviar</button>
+                <button type="reset">Redefinir</button>
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+        class Pessoa {
+            constructor(nome, email, dataNascimento, telefoneFixo, telefoneCelular) {
+                this.nome = nome;
+                this.email = email;
+                this.dataNascimento = dataNascimento;
+                this.telefoneFixo = telefoneFixo;
+                this.telefoneCelular = telefoneCelular;
+            }
+        }
+
+        class Aluno extends Pessoa {
+            constructor(nome, email, dataNascimento, telefoneFixo, telefoneCelular, curso) {
+                super(nome, email, dataNascimento, telefoneFixo, telefoneCelular);
+                this.curso = curso;
+            }
+        }
+
+        class Professor extends Pessoa {
+            constructor(nome, email, dataNascimento, telefoneFixo, telefoneCelular, area, lattes, matricula) {
+                super(nome, email, dataNascimento, telefoneFixo, telefoneCelular);
+                this.area = area;
+                this.lattes = lattes;
+                this.matricula = matricula;
+            }
+        }
+
+        const professorRadio = document.getElementById('professorRadio');
+        const alunoRadio = document.getElementById('alunoRadio');
+        const formProfessor = document.getElementById('formProfessor');
+        const formAluno = document.getElementById('formAluno');
+
+        professorRadio.addEventListener('change', () => {
+            formProfessor.classList.add('active');
+            formAluno.classList.remove('active');
+        });
+
+        alunoRadio.addEventListener('change', () => {
+            formAluno.classList.add('active');
+            formProfessor.classList.remove('active');
+        });
+        function formatTelefoneFixo(value) {
+            value = value.replace(/\D/g, "");
+            if (value.length > 10) {
+                value = value.slice(0, 10);
+            }
+            value = value.replace(/^(\d{2})(\d{4})(\d{4})$/, "($1) $2-$3");
+            return value;
+        }
+
+        function formatTelefoneCelular(value) {
+            value = value.replace(/\D/g, "");
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+            value = value.replace(/^(\d{2})(\d{5})(\d{4})$/, "($1) $2-$3");
+            return value;
+        }
+
+        document.getElementById('telefoneFixoProfessor').addEventListener('input', function() {
+            this.value = formatTelefoneFixo(this.value);
+        });
+
+        document.getElementById('telefoneCelularProfessor').addEventListener('input', function() {
+            this.value = formatTelefoneCelular(this.value);
+        });
+
+        document.getElementById('telefoneFixoAluno').addEventListener('input', function() {
+            this.value = formatTelefoneFixo(this.value);
+        });
+
+        document.getElementById('telefoneCelularAluno').addEventListener('input', function() {
+            this.value = formatTelefoneCelular(this.value);
+        });
+
+        formProfessor.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nomeProfessor').value;
+            const email = document.getElementById('emailProfessor').value;
+            const dataNascimento = document.getElementById('dataNascimentoProfessor').value;
+            const telefoneFixo = document.getElementById('telefoneFixoProfessor').value;
+            const telefoneCelular = document.getElementById('telefoneCelularProfessor').value;
+            const area = document.getElementById('areaProfessor').value;
+            const lattes = document.getElementById('lattesProfessor').value;
+            const matricula = document.getElementById('matriculaProfessor').value;
+
+            const professor = new Professor(nome, email, dataNascimento, telefoneFixo, telefoneCelular, area, lattes, matricula);
+            console.log(professor);
+            alert('Dados do professor armazenados com sucesso!');
+        });
+
+        formAluno.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const nome = document.getElementById('nomeAluno').value;
+            const email = document.getElementById('emailAluno').value;
+            const dataNascimento = document.getElementById('dataNascimentoAluno').value;
+            const telefoneFixo = document.getElementById('telefoneFixoAluno').value;
+            const telefoneCelular = document.getElementById('telefoneCelularAluno').value;
+            const curso = document.getElementById('cursoAluno').value;
+
+            const aluno = new Aluno(nome, email, dataNascimento, telefoneFixo, telefoneCelular, curso);
+            console.log(aluno);
+            alert('Dados do aluno armazenados com sucesso!');
+        });
+    </script>
+
+</body>
+</html>
