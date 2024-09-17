@@ -46,20 +46,31 @@
     </div>
 
     <script>
-        function displayTime() {
-            const agora = new Date();
-            const horas = String(agora.getHours()).padStart(2, '0');
-            const minutos = String(agora.getMinutes()).padStart(2, '0');
-            const segundos = String(agora.getSeconds()).padStart(2, '0');
-            return `${horas}:${minutos}:${segundos}`;
+        class Relogio {
+            constructor(elementId) {
+                this.element = document.getElementById(elementId);
+            }
+
+            obterHorario() {
+                const agora = new Date();
+                const horas = String(agora.getHours()).padStart(2, '0');
+                const minutos = String(agora.getMinutes()).padStart(2, '0');
+                const segundos = String(agora.getSeconds()).padStart(2, '0');
+                return `${horas}:${minutos}:${segundos}`;
+            }
+
+            atualizarRelogio() {
+                this.element.textContent = this.obterHorario();
+                setTimeout(() => this.atualizarRelogio(), 1000); 
+            }
+
+            iniciar() {
+                this.atualizarRelogio();
+            }
         }
 
-        function atualizarRelogio() {
-            document.getElementById('relogio').textContent = displayTime();
-            setTimeout(atualizarRelogio, 1000);
-        }
-
-        atualizarRelogio();
+        const meuRelogio = new Relogio('relogio');
+        meuRelogio.iniciar();
     </script>
 </body>
 </html>
