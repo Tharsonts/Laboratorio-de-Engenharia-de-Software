@@ -78,27 +78,37 @@
     <ol id="lista"></ol>
     
     <script>
+        class ListaDeItens {
+            constructor() {
+                this.itens = [];
+                this.lista = document.getElementById('lista');
+            }
+
+            adicionarItem(item) {
+                this.itens.push(item);
+                this.itens.sort();
+                this.atualizarLista();
+            }
+
+            atualizarLista() {
+                this.lista.innerHTML = '';
+                this.itens.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    this.lista.appendChild(li);
+                });
+            }
+        }
+
         const form = document.getElementById('form');
         const itemInput = document.getElementById('item');
-        const lista = document.getElementById('lista');
-        const itens = [];
+        const listaDeItens = new ListaDeItens();
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            itens.push(itemInput.value);
-            itens.sort();
-            atualizarLista();
+            listaDeItens.adicionarItem(itemInput.value);
             itemInput.value = '';
         });
-
-        function atualizarLista() {
-            lista.innerHTML = '';
-            itens.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                lista.appendChild(li);
-            });
-        }
     </script>
 </body>
 </html>
