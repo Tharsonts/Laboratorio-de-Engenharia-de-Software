@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exibição de Data e Hora</title>
+    <title>Exibição de Data</title>
     <style>
         body {
             font-family: 'Verdana', sans-serif;
@@ -41,17 +41,17 @@
 <body>
 
     <div>
-        <h1>Data e Hora Atual:</h1>
-        <p id="dataHora"></p>
+        <h1>Data Atual:</h1>
+        <p id="data"></p>
     </div>
 
     <script>
-        class DataHoraAtual {
+        class DataAtual {
             constructor() {
                 this.date = new Date();
             }
 
-            formatarDataHora() {
+            formatarData() {
                 const diasDaSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
                 const meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
 
@@ -59,27 +59,13 @@
                 const dia = this.date.getDate();
                 const mes = meses[this.date.getMonth()];
                 const ano = this.date.getFullYear();
-                
-                const horas = String(this.date.getHours()).padStart(2, '0');
-                const minutos = String(this.date.getMinutes()).padStart(2, '0');
-                const segundos = String(this.date.getSeconds()).padStart(2, '0');
 
-                return `${diaSemana}, ${dia} de ${mes} de ${ano}, ${horas}:${minutos}:${segundos}`;
-            }
-
-            atualizarDataHora() {
-                this.date = new Date();
+                return `${diaSemana}, ${dia} de ${mes} de ${ano}`;
             }
         }
 
-        const dataHoraAtual = new DataHoraAtual();
-
-        function exibirDataHora() {
-            dataHoraAtual.atualizarDataHora();
-            document.getElementById('dataHora').textContent = dataHoraAtual.formatarDataHora();
-        }
-
-        setInterval(exibirDataHora, 1000); 
+        const dataAtual = new DataAtual();
+        document.getElementById('data').textContent = dataAtual.formatarData();
     </script>
 </body>
 </html>
