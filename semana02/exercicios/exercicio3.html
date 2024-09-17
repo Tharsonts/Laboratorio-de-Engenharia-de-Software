@@ -66,14 +66,36 @@
 
     <h1>Teste de Palíndromo</h1>
     <input type="text" id="frase" placeholder="Digite uma palavra ou frase">
-    <button onclick="verificar()">Verificar</button>
+    <button id="btnVerificar">Verificar</button>
 
     <script>
-        function verificar() {
-            let frase = document.getElementById('frase').value.toLowerCase().replace(/[^a-z0-9]/g, '');
-            let reverso = frase.split('').reverse().join('');
-            alert(frase === reverso ? "Palíndromo detectado!" : "Não é um palíndromo.");
+        class Palindromo {
+            constructor(frase) {
+                this.frase = frase;
+            }
+
+            formatarFrase() {
+                return this.frase.toLowerCase().replace(/[^a-z0-9]/g, '');
+            }
+
+            verificar() {
+                const fraseFormatada = this.formatarFrase();
+                const reverso = fraseFormatada.split('').reverse().join('');
+                return fraseFormatada === reverso;
+            }
+
+            mostrarResultado() {
+                alert(this.verificar() ? "Palíndromo detectado!" : "Não é um palíndromo.");
+            }
         }
+
+        function verificarPalindromo() {
+            const frase = document.getElementById('frase').value;
+            const palindromo = new Palindromo(frase);
+            palindromo.mostrarResultado();
+        }
+
+        document.getElementById('btnVerificar').addEventListener('click', verificarPalindromo);
     </script>
 
 </body>
