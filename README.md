@@ -37,6 +37,8 @@ Desafios focados em manipulação de datas e strings:
 
 <img src="img/Atividade 3(1).png" alt="Atividade" width="600">
 
+---
+
 ## 📅 ATIVIDADES DA SEMANA 04
 
 1️⃣ Criação de Formulário para Aluno e Professor
