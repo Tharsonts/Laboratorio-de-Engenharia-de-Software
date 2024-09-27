@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+    <link rel="icon" href="path/to/mario.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background: radial-gradient(circle at 50% 50%, #000, #001022);
+            color: white;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-shadow: 0px 0px 20px rgba(0, 255, 234, 1);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 234, 0.8);
+            width: 80%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-group {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-group select, input {
+            padding: 10px;
+            margin: 8px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            font-size: 0.9rem;
+            height: 35px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px;
+            margin: 8px 0;
+            width: 100%;
+            max-width: 200px;
+            border-radius: 5px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 255, 234, 0.3);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        th {
+            background-color: rgba(0, 255, 234, 0.2);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            background-color: rgba(0, 0, 0, 0.4);
+            transition: background-color 0.2s ease;
+        }
+
+        tr:hover td {
+            background-color: rgba(0, 255, 234, 0.1);
+        }
+
+        .btn {
+            padding: 6px 12px;
+            margin: 2px;
+            font-size: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn.details {
+            background-color: #007bff;
+        }
+
+        .btn.complete {
+            background-color: #28a745;
+        }
+
+        .btn.remove {
+            background-color: #dc3545;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn.details:hover {
+            background-color: #0056b3;
+        }
+
+        .btn.complete:hover {
+            background-color: #218838;
+        }
+
+        .btn.remove:hover {
+            background-color: #c82333;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: grey;
+        }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: rgba(0, 0, 0, 0.7); 
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 234, 0.8);
+            max-width: 500px;
+            width: 90%;
+            color: white;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .modal-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-body p {
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #ffffff;  
+        }
+
+        .modal-footer {
+            text-align: right;
+        }
+
+        .close-modal {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gerenciador de Tarefas Avançado</h1>
+    <div class="container">
+        <div class="form-group">
+            <input type="text" id="nome" placeholder="Nome da Tarefa">
+            <input type="text" id="descricao" placeholder="Descrição da Tarefa">
+            <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+        </div>
+
+        <table id="tabelaTarefas">
+            <thead>
+                <tr>
+                    <th>Tarefa</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="modal" id="modalDetalhes">
+        <div class="modal-content">
+            <div class="modal-header">Detalhes da Tarefa</div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer">
+                <button class="close-modal" onclick="fecharModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="three-canvas"></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        class Tarefa {
+            constructor(nome, descricao) {
+                this.nome = nome;
+                this.descricao = descricao;
+                this.status = 'pendente';
+            }
+
+            concluir() {
+                this.status = 'concluída';
+            }
+
+            detalhes() {
+                return `Tarefa: ${this.nome}\nDescrição: ${this.descricao}\nStatus: ${this.status}`;
+            }
+        }
+
+        class GerenciadorDeTarefas {
+            #tarefas = [];
+
+            constructor() {
+                this.#tarefas = this.carregarTarefas() || [];
+            }
+
+            adicionarTarefa(tarefa) {
+                this.#tarefas.push(tarefa);
+                this.salvarTarefas();
+                this.renderizar();
+            }
+
+            listarTarefas() {
+                return this.#tarefas;
+            }
+
+            marcarComoConcluida(index) {
+                this.#tarefas[index].concluir();
+                this.salvarTarefas();
+                this.renderizar();
+            }
+
+            removerTarefa(index) {
+                this.#tarefas.splice(index, 1);
+                this.salvarTarefas();
+                this.renderizar();
+            }
+
+            visualizarDetalhes(index) {
+                const tarefa = this.#tarefas[index];
+                const modalBody = document.getElementById("modalBody");
+                modalBody.innerHTML = `
+                    <p><strong>Nome:</strong> ${tarefa.nome}</p>
+                    <p><strong>Descrição:</strong> ${tarefa.descricao}</p>
+                    <p><strong>Status:</strong> ${tarefa.status}</p>
+                `;
+                document.getElementById("modalDetalhes").style.display = "flex";
+            }
+
+            renderizar() {
+                const tabela = document.querySelector("#tabelaTarefas tbody");
+                tabela.innerHTML = '';
+
+                this.#tarefas.forEach((tarefa, index) => {
+                    const linha = document.createElement('tr');
+                    const nomeTarefa = document.createElement('td');
+                    nomeTarefa.textContent = tarefa.nome;
+                    if (tarefa.status === 'concluída') {
+                        nomeTarefa.classList.add('completed');
+                    }
+
+                    const acoesTarefa = document.createElement('td');
+                    const btnDetalhes = document.createElement('button');
+                    btnDetalhes.textContent = 'Detalhes';
+                    btnDetalhes.classList.add('btn', 'details');
+                    btnDetalhes.onclick = () => this.visualizarDetalhes(index);
+
+                    const btnConcluir = document.createElement('button');
+                    btnConcluir.textContent = 'Concluir';
+                    btnConcluir.classList.add('btn', 'complete');
+                    btnConcluir.onclick = () => this.marcarComoConcluida(index);
+
+                    const btnRemover = document.createElement('button');
+                    btnRemover.textContent = 'Remover';
+                    btnRemover.classList.add('btn', 'remove');
+                    btnRemover.onclick = () => this.removerTarefa(index);
+
+                    acoesTarefa.appendChild(btnDetalhes);
+                    acoesTarefa.appendChild(btnConcluir);
+                    acoesTarefa.appendChild(btnRemover);
+
+                    linha.appendChild(nomeTarefa);
+                    linha.appendChild(acoesTarefa);
+                    tabela.appendChild(linha);
+                });
+            }
+
+            salvarTarefas() {
+                localStorage.setItem('tarefas', JSON.stringify(this.#tarefas));
+            }
+
+            carregarTarefas() {
+                const tarefasJSON = localStorage.getItem('tarefas');
+                if (tarefasJSON) {
+                    return JSON.parse(tarefasJSON).map(t => new Tarefa(t.nome, t.descricao));
+                }
+                return [];
+            }
+        }
+
+        const gerenciadorDeTarefas = new GerenciadorDeTarefas();
+        gerenciadorDeTarefas.renderizar();
+
+        function adicionarTarefa() {
+            const nome = document.getElementById('nome').value;
+            const descricao = document.getElementById('descricao').value;
+
+            if (nome && descricao) {
+                const tarefa = new Tarefa(nome, descricao);
+                gerenciadorDeTarefas.adicionarTarefa(tarefa);
+
+                document.getElementById('nome').value = '';
+                document.getElementById('descricao').value = '';
+            } else {
+                alert('Preencha o nome e a descrição da tarefa!');
+            }
+        }
+
+        function fecharModal() {
+            document.getElementById("modalDetalhes").style.display = "none";
+        }
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#three-canvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const starGeometry = new THREE.BufferGeometry();
+        const starsCount = 2000;
+        const starPositions = new Float32Array(starsCount * 3);
+
+        for (let i = 0; i < starsCount; i++) {
+            starPositions[i * 3] = (Math.random() - 0.5) * 100;
+            starPositions[i * 3 + 1] = (Math.random() - 0.5) * 100;
+            starPositions[i * 3 + 2] = (Math.random() - 0.5) * 100;
+        }
+
+        starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+        const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.1 });
+        const starField = new THREE.Points(starGeometry, starMaterial);
+        scene.add(starField);
+
+        function animateStars() {
+            starField.rotation.y += 0.001;
+            renderer.render(scene, camera);
+            requestAnimationFrame(animateStars);
+        }
+
+        animateStars();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        camera.position.z = 5;
+    </script>
+
+</body>
+</html>
