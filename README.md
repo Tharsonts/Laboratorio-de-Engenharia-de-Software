@@ -43,6 +43,24 @@ Desafios focados em manipulação de datas e strings:
 
 1️⃣ Criação de Formulário para Aluno e Professor
 
-<img src="img/Atividade 4.png" alt="Atividade" width="600">
+---
+
+## 📅 ATIVIDADES DA SEMANA 05
+Nesta semana, você desenvolverá uma aplicação simples de gerenciamento de tarefas utilizando Programação Orientada a Objetos. A atividade envolve criar duas classes principais:
+
+1️⃣ Classe Tarefa:
+
+Atributos: nome, descricao, status (pendente ou concluída).
+Métodos: concluir() (marca como concluída) e detalhes() (exibe informações da tarefa).
+2️⃣ Classe GerenciadorDeTarefas:
+
+Métodos:
+adicionarTarefa(): Adiciona uma nova tarefa.
+listarTarefas(): Lista todas as tarefas.
+marcarComoConcluida(): Marca uma tarefa como concluída.
+removerTarefa(): Remove uma tarefa.
+visualizarDetalhes(): Exibe os detalhes de uma tarefa específica.
+🖼 Imagem da Atividade:
+<img src="img/semana05.jpg" alt="Atividade Semana 05" width="600">
 
 📝 *As atividades são projetadas para fortalecer habilidades em lógica de programação e aprimorar o domínio de JavaScript. Boa prática!*
